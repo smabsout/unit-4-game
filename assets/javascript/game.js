@@ -2,7 +2,7 @@ $(document).ready(function(){
     var randNumber = Math.floor(Math.random()*100);
     console.log(randNumber);
     // Showing the winning randNumber
-    $('winningNumber').text(randNumber)*102+19;
+    $('#toWin').text(randNumber)*102+19;
 
     //initializing numbers
 
@@ -10,6 +10,11 @@ $(document).ready(function(){
     var c2 = Math.floor(Math.random()*12+1);
     var c3 = Math.floor(Math.random()*12+1);
     var c4 = Math.floor(Math.random()*12+1);
+    // var winSound = new sound ("win.mp3");
+    // var loseSound = new sound ("lose.mp3");
+    var winSound = new Audio('win.mp3');
+
+var loseSound = new Audio ('lose.mp3');
 
     var totalScore = 0;
     var wins = 0;
@@ -57,8 +62,9 @@ $(document).ready(function(){
         console.log("Total Score = " + totalScore);
         $('#score').text(totalScore); 
         //Comparison
-            if (totalScore == Random){
+            if (totalScore == randNumber){
               youWin();
+              win.play();
             }
             else if ( totalScore > Random){
               youLose();
@@ -68,11 +74,13 @@ $(document).ready(function(){
         totalScore = totalScore + c2;
         console.log("Total Score= " + totalScore);
         $('#score').text(totalScore); 
-            if (totalScore == Random){
+            if (totalScore == randNumber){
               youWin();
+              win.play();
             }
-            else if ( totalScore > Random){
+            else if ( totalScore > randNumber){
               youLose();
+              lose.play();
             } 
       })  
       $('.yellow').on ('click', function(){
@@ -80,11 +88,13 @@ $(document).ready(function(){
         console.log("Total score= " + totalScore);
         $('#score').text(totalScore);
     
-              if (totalScore == Random){
+              if (totalScore == randNumber){
               youWin();
+              win.play();
             }
-            else if ( totalScore > Random){
+            else if ( totalScore > randNumber){
               youLose();
+              lose.play();
             } 
       })  
       $('.green').on ('click', function(){
@@ -92,11 +102,13 @@ $(document).ready(function(){
         console.log("Total Score= " + totalScore);
         $('#score').text(totalScore); 
           
-              if (totalScore == Random){
+              if (totalScore == randNumber){
               youWin();
+              win.play();
             }
-            else if ( totalScore > Random){
+            else if ( totalScore > randNumber){
               youLose();
+              lose.play();
             }
       });   
     }); 
